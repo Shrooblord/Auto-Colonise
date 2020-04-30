@@ -1,5 +1,7 @@
 namespace = shrooblord_autocolonise
 
+#TODO: Add is-Colony-Ship-still-alive checks and abort Events / reset flags as appropriate in case it somehow died before the chain could complete
+
 #default auto-col
 country_event {
 	id = shrooblord_autocolonise.1
@@ -13,68 +15,123 @@ country_event {
 	}
 
 	trigger = {
-        has_policy_flag = autocolonisation_enabled
+		has_policy_flag = autocolonisation_enabled
+		NOT = { has_country_flag = autocolonisation_in_progress }
 	}
 
 	immediate = {
-		every_planet_within_border = {
-			limit = {			#only habitable planets within borders that are unowned and not currently being colonised
-				AND = {
-					habitable_planet = yes
-					NAND = {
-						exists = owner
-						owner = { is_primitive = yes }
-					}
-					is_colony = no
-					is_under_colonization = no
-					NOT = { has_planet_flag = autocolonise_any }
-				}
-			}
-
-			#set the "any colonist species may colonise this world, thx" flag
-			set_planet_flag = "autocolonise_any"
-
-			#figure out which species would survive on this planet the best (i.e. look for maximum habitability)
-			#every_owned_species = {
-			#	limit = {
-			#		is_sapient = yes
-			#		has_colonization_control = no
-
-					#scope back to Planet to get Habitability
-			#		prev = {
-			#			habitability = {
-			#				who = this
-			#				value >= 0.7
-			#			}
-			#		}
-			#	}
-
-				#set Social Welfare for all owned Species real quick (TEST)
-			#	set_living_standard = { type = living_standard_good country = root }
-			#}
-
-			#if there are multiple likely candidates, choose one at random
-			#...
-
-			#if all our options are low-habitability (< 70%) only, discard, *unless* the Policy "Minimum Habitability" override allows this regardless
-			#...
-
-			#if we still have a candidate at this point, spawn a Colony Ship for them at the nearest Shipyard and send it on its way!
-			create_fleet = {
-				name = "NAME_Prethoryn_Infestor"
-				effect = {
-					set_owner = root
-					create_ship = {
-						name = random
-						design = "NAME_Swarm_Colonizer"
-						graphical_culture = "swarm_01"
-					}
-					set_location = {
-						target = prev
-						distance = 5
-						angle = random
+		every_system_within_border = {
+			every_system_planet = {
+				limit = {			#only habitable planets within borders that are unowned and not currently being colonised
+					AND = {
+						habitable_planet = yes
+						NAND = {
+							exists = owner
+							owner = { is_primitive = yes }
+						}
+						is_colony = no
+						is_under_colonization = no
+						NOT = { has_planet_flag = autocolonise_any }
 					}
 				}
+
+				root = { 
+					capital_scope = {
+						save_event_target_as = autocoloniser_spawn
+					}
+				}
+
+				#set the "any colonist species may colonise this world, thx" flag
+				set_planet_flag = autocolonise_any
+				save_event_target_as = autocol_planet
+
+				#figure out which species would survive on this planet the best (i.e. look for maximum habitability)
+				#every_owned_species = {
+				#	limit = {
+				#		is_sapient = yes
+				#		has_colonization_control = no
+
+						#scope back to Planet to get Habitability
+				#		prev = {
+				#			habitability = {
+				#				who = this
+				#				value >= 0.7
+				#			}
+				#		}
+				#	}
+
+					#set Social Welfare for all owned Species real quick (TEST)
+				#	set_living_standard = { type = living_standard_good country = root }
+				#}
+
+
+
+
+				#if there are multiple likely candidates, choose one at random
+				#...
+
+
+
+
+				#if all our options are low-habitability (< 70%) only, discard, *unless* the Policy "Minimum Habitability" override allows this regardless
+				#...
+
+
+
+
+				#Find the closest system that satisfies the conditions: 0) owned by this country; 1) has a Starbase; 2) with a Shipyard
+				closest_system = {
+					limit = {
+						exists = space_owner
+						space_owner = { is_same_value = root }
+
+						starbase = {
+							has_starbase_module = shipyard
+						}
+					}
+
+					min_steps = 0
+					max_steps = 1000
+					
+					starbase = { save_event_target_as = autocoloniser_spawn }
+				}
+
+				#if we still have a candidate at this point, spawn a Colony Ship for them at the nearest Shipyard and send it on its way!
+				create_fleet = {
+					name = "NAME_Prethoryn_Infestor"
+					effect = {
+						set_owner = root
+
+						create_ship = {
+							name = random
+							design = "NAME_Swarm_Colonizer"
+							graphical_culture = "swarm_01"
+						}
+
+						set_location = {
+							target = event_target:autocoloniser_spawn
+							distance = 5
+							angle = random
+						}
+
+						#give the spawned Colony Ship some orders; fly to the planet, and start Colonising it!
+						queue_actions = {									
+							orbit_planet = event_target:autocol_planet								#go to the planet
+							wait = {duration = 10}													#wait 10 days in-orbit
+
+							effect = {
+								id = shrooblord_autocolonise.1.trigger.2
+								delete_fleet = this													#suicide Colony Ship
+								event_target:autocol_planet = { 
+									remove_planet_flag = autocolonise_any							#get rid of the "this is my target" flag
+									start_colony = {}												#start the Colonisation of the Planet below
+								}		
+							}
+						}
+					}
+				}
+
+				#clear all star flags: "has shipyard?"
 			}
 		}
 	}
