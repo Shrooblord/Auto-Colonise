@@ -1,0 +1,80 @@
+namespace = shrooblord_autocolonise
+
+#default auto-col
+country_event {
+	id = shrooblord_autocolonise.1
+	hide_window = yes
+	#is_triggered_only = yes
+
+	mean_time_to_happen = { days = 15 }
+
+	pre_triggers = {
+		is_ai = no
+	}
+
+	trigger = {
+        has_policy_flag = autocolonisation_enabled
+	}
+
+	immediate = {
+		every_planet_within_border = {
+			limit = {			#only habitable planets within borders that are unowned and not currently being colonised
+				AND = {
+					habitable_planet = yes
+					NAND = {
+						exists = owner
+						owner = { is_primitive = yes }
+					}
+					is_colony = no
+					is_under_colonization = no
+					NOT = { has_planet_flag = autocolonise_any }
+				}
+			}
+
+			#set the "any colonist species may colonise this world, thx" flag
+			set_planet_flag = "autocolonise_any"
+		}
+	}
+}
+
+#auto-col, but pref organics
+country_event {
+	id = shrooblord_autocolonise.2
+	hide_window = yes
+	#is_triggered_only = yes
+
+	mean_time_to_happen = { days = 15 }
+
+	pre_triggers = {
+		is_ai = no
+	}
+
+	trigger = {
+        has_policy_flag = autocolonisation_enabled_prefer_organics
+	}
+
+	immediate = {
+		
+	}
+}
+
+#auto-col, and definitely no machines allowed!! (even go so far as to allow organics with very low habitability)
+country_event {
+	id = shrooblord_autocolonise.3
+	hide_window = yes
+	#is_triggered_only = yes
+
+	mean_time_to_happen = { days = 15 }
+
+	pre_triggers = {
+		is_ai = no
+	}
+
+	trigger = {
+        has_policy_flag = autocolonisation_enabled_no_machines
+	}
+
+	immediate = {
+		
+	}
+}

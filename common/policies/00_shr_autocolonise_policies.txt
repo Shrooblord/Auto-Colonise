@@ -1,0 +1,77 @@
+shr_autocolonise_pol = {
+	potential = {
+		is_country_type = default
+	}
+
+    option = {
+		name = "shr_autocolonisation_disabled_protocols"
+
+		potential = {
+			is_country_type = default
+		}
+
+		policy_flags = {
+			autocolonisation_disabled
+		}
+
+        valid = {
+            always = yes
+        }
+		modifier = {}
+        ai_weight = { weight = 100 }
+	}
+
+	option = {
+		name = "shr_autocolonisation_enabled_protocols"
+
+		potential = {
+			is_country_type = default
+		}
+
+		policy_flags = {
+			autocolonisation_enabled
+		}
+
+        valid = {
+            always = yes
+        }
+		modifier = {}
+        ai_weight = { weight = 0 }
+	}
+
+	option = {
+		name = "shr_autocolonisation_enabled_prefer_organics_protocols"
+
+		potential = {
+			is_country_type = default
+		}
+
+		policy_flags = {
+			autocolonisation_enabled_prefer_organics
+		}
+
+        valid = {
+            always = no #yes
+        }
+		modifier = {}
+        ai_weight = { weight = 0 }
+	}
+
+	option = {
+		name = "shr_autocolonisation_enabled_no_machines_protocols"
+
+		potential = {
+			is_country_type = default
+		}
+
+		policy_flags = {
+			autocolonisation_enabled_no_machines
+		}
+
+        valid = {
+            always = no #yes
+        }
+		modifier = {}
+        ai_weight = { weight = 0 }
+	}
+}
