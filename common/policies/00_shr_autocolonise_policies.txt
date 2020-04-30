@@ -75,3 +75,230 @@ shr_autocolonise_pol = {
         ai_weight = { weight = 0 }
 	}
 }
+
+shr_autocolonise_habitability_override_pol = {
+	potential = {
+		is_country_type = default
+		OR = {
+			has_policy_flag = autocolonisation_enabled
+			has_policy_flag = autocolonisation_enabled_prefer_organics
+			has_policy_flag = autocolonisation_enabled_no_machines
+		}
+	}
+
+	option = {
+		name = "shr_autocolonisation_habitability_no_override"
+
+		potential = {
+			is_country_type = default
+		}
+
+		policy_flags = {
+			autocolonisation_habitability_no_override
+		}
+
+        valid = {
+            always = yes
+        }
+		modifier = {}
+        ai_weight = { weight = 100 }
+	}
+
+	option = {
+		name = "shr_autocolonisation_habitability_override_0"
+
+		potential = {
+			is_country_type = default
+		}
+
+		policy_flags = {
+			autocolonisation_habitability_override_0
+		}
+
+        valid = {
+            always = yes
+        }
+		modifier = {}
+        ai_weight = { weight = 0 }
+	}
+
+	option = {
+		name = "shr_autocolonisation_habitability_override_10"
+
+		potential = {
+			is_country_type = default
+		}
+
+		policy_flags = {
+			autocolonisation_habitability_override_10
+		}
+
+        valid = {
+            always = yes
+        }
+		modifier = {}
+        ai_weight = { weight = 0 }
+	}
+
+	option = {
+		name = "shr_autocolonisation_habitability_override_20"
+
+		potential = {
+			is_country_type = default
+		}
+
+		policy_flags = {
+			autocolonisation_habitability_override_20
+		}
+
+        valid = {
+            always = yes
+        }
+		modifier = {}
+        ai_weight = { weight = 0 }
+	}
+
+	option = {
+		name = "shr_autocolonisation_habitability_override_30"
+
+		potential = {
+			is_country_type = default
+		}
+
+		policy_flags = {
+			autocolonisation_habitability_override_30
+		}
+
+        valid = {
+            always = yes
+        }
+		modifier = {}
+        ai_weight = { weight = 0 }
+	}
+
+	option = {
+		name = "shr_autocolonisation_habitability_override_40"
+
+		potential = {
+			is_country_type = default
+		}
+
+		policy_flags = {
+			autocolonisation_habitability_override_40
+		}
+
+        valid = {
+            always = yes
+        }
+		modifier = {}
+        ai_weight = { weight = 0 }
+	}
+
+	option = {
+		name = "shr_autocolonisation_habitability_override_50"
+
+		potential = {
+			is_country_type = default
+		}
+
+		policy_flags = {
+			autocolonisation_habitability_override_50
+		}
+
+        valid = {
+            always = yes
+        }
+		modifier = {}
+        ai_weight = { weight = 0 }
+	}
+
+	option = {
+		name = "shr_autocolonisation_habitability_override_60"
+
+		potential = {
+			is_country_type = default
+		}
+
+		policy_flags = {
+			autocolonisation_habitability_override_60
+		}
+
+        valid = {
+            always = yes
+        }
+		modifier = {}
+        ai_weight = { weight = 0 }
+	}
+
+	option = {
+		name = "shr_autocolonisation_habitability_override_70"
+
+		potential = {
+			is_country_type = default
+		}
+
+		policy_flags = {
+			autocolonisation_habitability_override_70
+		}
+
+        valid = {
+            always = yes
+        }
+		modifier = {}
+        ai_weight = { weight = 0 }
+	}
+
+	option = {
+		name = "shr_autocolonisation_habitability_override_80"
+
+		potential = {
+			is_country_type = default
+		}
+
+		policy_flags = {
+			autocolonisation_habitability_override_80
+		}
+
+        valid = {
+            always = yes
+        }
+		modifier = {}
+        ai_weight = { weight = 0 }
+	}
+
+	option = {
+		name = "shr_autocolonisation_habitability_override_90"
+
+		potential = {
+			is_country_type = default
+		}
+
+		policy_flags = {
+			autocolonisation_habitability_override_90
+		}
+
+        valid = {
+            always = yes
+        }
+		modifier = {}
+        ai_weight = { weight = 0 }
+	}
+
+	option = {
+		name = "shr_autocolonisation_habitability_override_100"
+
+		potential = {
+			is_country_type = default
+		}
+
+		policy_flags = {
+			autocolonisation_habitability_override_100
+		}
+
+        valid = {
+            always = yes
+        }
+		modifier = {}
+        ai_weight = { weight = 0 }
+	}
+}
