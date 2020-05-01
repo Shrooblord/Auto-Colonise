@@ -6,7 +6,6 @@ namespace = shrooblord_autocolonise
 country_event {
 	id = shrooblord_autocolonise.1
 	hide_window = yes
-	#is_triggered_only = yes
 
 	mean_time_to_happen = { days = 15 }
 
@@ -15,8 +14,7 @@ country_event {
 	}
 
 	trigger = {
-		has_policy_flag = autocolonisation_enabled
-		NOT = { has_country_flag = autocolonisation_in_progress }
+		has_policy_flag = shr_autocolonisation_enabled_protocols
 	}
 
 	immediate = {
@@ -98,16 +96,18 @@ country_event {
 
 				#if we still have a candidate at this point, spawn a Colony Ship for them at the nearest Shipyard and send it on its way!
 				create_fleet = {
-					name = "NAME_Prethoryn_Infestor"
+					name = "NAME_AutoColoniser"
 					effect = {
 						set_owner = root
-
 						create_ship = {
-							name = random
-							design = "NAME_Swarm_Colonizer"
-							graphical_culture = "swarm_01"
+							name = "NAME_AutoColoniser"
+							random_existing_design = colonizer
+							colonizer_species = root.owner_species #event_target:cryonic_clones
+							prefix = no
+							upgradable = no
 						}
 
+						#spawn location
 						set_location = {
 							target = event_target:autocoloniser_spawn
 							distance = 5
@@ -129,9 +129,13 @@ country_event {
 							}
 						}
 					}
+					settings = {
+						can_change_composition = no
+						can_change_leader = no
+						uses_naval_capacity = no
+						spawn_debris = no
+					}
 				}
-
-				#clear all star flags: "has shipyard?"
 			}
 		}
 	}
@@ -150,7 +154,7 @@ country_event {
 	}
 
 	trigger = {
-        has_policy_flag = autocolonisation_enabled_prefer_organics
+        has_policy_flag = shr_autocolonisation_enabled_prefer_organics_protocols
 	}
 
 	immediate = {
@@ -171,7 +175,7 @@ country_event {
 	}
 
 	trigger = {
-        has_policy_flag = autocolonisation_enabled_no_machines
+        has_policy_flag = shr_autocolonisation_enabled_no_machines_protocols
 	}
 
 	immediate = {

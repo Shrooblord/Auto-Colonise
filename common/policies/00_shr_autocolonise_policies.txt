@@ -11,7 +11,7 @@ shr_autocolonise_pol = {
 		}
 
 		policy_flags = {
-			autocolonisation_disabled
+			shr_autocolonisation_disabled_protocols
 		}
 
         valid = {
@@ -29,7 +29,7 @@ shr_autocolonise_pol = {
 		}
 
 		policy_flags = {
-			autocolonisation_enabled
+			shr_autocolonisation_enabled_protocols
 		}
 
         valid = {
@@ -47,7 +47,7 @@ shr_autocolonise_pol = {
 		}
 
 		policy_flags = {
-			autocolonisation_enabled_prefer_organics
+			shr_autocolonisation_enabled_prefer_organics_protocols
 		}
 
         valid = {
@@ -65,7 +65,7 @@ shr_autocolonise_pol = {
 		}
 
 		policy_flags = {
-			autocolonisation_enabled_no_machines
+			shr_autocolonisation_enabled_no_machines_protocols
 		}
 
         valid = {
@@ -80,9 +80,9 @@ shr_autocolonise_habitability_override_pol = {
 	potential = {
 		is_country_type = default
 		OR = {
-			has_policy_flag = autocolonisation_enabled
-			has_policy_flag = autocolonisation_enabled_prefer_organics
-			has_policy_flag = autocolonisation_enabled_no_machines
+			has_policy_flag = shr_autocolonisation_enabled_protocols
+			has_policy_flag = shr_autocolonisation_enabled_prefer_organics_protocols
+			has_policy_flag = shr_autocolonisation_enabled_no_machines_protocols
 		}
 	}
 
@@ -94,7 +94,7 @@ shr_autocolonise_habitability_override_pol = {
 		}
 
 		policy_flags = {
-			autocolonisation_habitability_no_override
+			shr_autocolonisation_habitability_no_override
 		}
 
         valid = {
@@ -112,7 +112,7 @@ shr_autocolonise_habitability_override_pol = {
 		}
 
 		policy_flags = {
-			autocolonisation_habitability_override_0
+			shr_autocolonisation_habitability_override_0
 		}
 
         valid = {
@@ -130,7 +130,7 @@ shr_autocolonise_habitability_override_pol = {
 		}
 
 		policy_flags = {
-			autocolonisation_habitability_override_10
+			shr_autocolonisation_habitability_override_10
 		}
 
         valid = {
@@ -148,7 +148,7 @@ shr_autocolonise_habitability_override_pol = {
 		}
 
 		policy_flags = {
-			autocolonisation_habitability_override_20
+			shr_autocolonisation_habitability_override_20
 		}
 
         valid = {
@@ -166,7 +166,7 @@ shr_autocolonise_habitability_override_pol = {
 		}
 
 		policy_flags = {
-			autocolonisation_habitability_override_30
+			shr_autocolonisation_habitability_override_30
 		}
 
         valid = {
@@ -184,7 +184,7 @@ shr_autocolonise_habitability_override_pol = {
 		}
 
 		policy_flags = {
-			autocolonisation_habitability_override_40
+			shr_autocolonisation_habitability_override_40
 		}
 
         valid = {
@@ -202,7 +202,7 @@ shr_autocolonise_habitability_override_pol = {
 		}
 
 		policy_flags = {
-			autocolonisation_habitability_override_50
+			shr_autocolonisation_habitability_override_50
 		}
 
         valid = {
@@ -220,7 +220,7 @@ shr_autocolonise_habitability_override_pol = {
 		}
 
 		policy_flags = {
-			autocolonisation_habitability_override_60
+			shr_autocolonisation_habitability_override_60
 		}
 
         valid = {
@@ -238,7 +238,7 @@ shr_autocolonise_habitability_override_pol = {
 		}
 
 		policy_flags = {
-			autocolonisation_habitability_override_70
+			shr_autocolonisation_habitability_override_70
 		}
 
         valid = {
@@ -256,7 +256,7 @@ shr_autocolonise_habitability_override_pol = {
 		}
 
 		policy_flags = {
-			autocolonisation_habitability_override_80
+			shr_autocolonisation_habitability_override_80
 		}
 
         valid = {
@@ -274,7 +274,7 @@ shr_autocolonise_habitability_override_pol = {
 		}
 
 		policy_flags = {
-			autocolonisation_habitability_override_90
+			shr_autocolonisation_habitability_override_90
 		}
 
         valid = {
@@ -292,7 +292,7 @@ shr_autocolonise_habitability_override_pol = {
 		}
 
 		policy_flags = {
-			autocolonisation_habitability_override_100
+			shr_autocolonisation_habitability_override_100
 		}
 
         valid = {
