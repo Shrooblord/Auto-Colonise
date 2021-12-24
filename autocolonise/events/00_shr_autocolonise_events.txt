@@ -37,6 +37,11 @@ country_event {
 					capital_scope = {
 						save_event_target_as = autocoloniser_spawn
 					}
+
+					#by default, we use the Founder Species to colonise with (the target Species may be changed later through further filtering)
+					owner_species = {
+						save_event_target_as = autocol_species
+					}
 				}
 
 				#set the "any colonist species may colonise this world, thx" flag
@@ -102,7 +107,7 @@ country_event {
 						create_ship = {
 							name = "NAME_AutoColoniser"
 							random_existing_design = colonizer
-							colonizer_species = root.owner_species #event_target:cryonic_clones
+							colonizer_species = event_target:autocol_species #root.owner_species #event_target:cryonic_clones
 							prefix = no
 							upgradable = no
 						}
