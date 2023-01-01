@@ -4,5 +4,5 @@ tags={
 	"Gameplay"
 }
 name="Auto-Colonise"
-supported_version="2.6.3"
-path="C:/Users/Shrooblord/Documents/Paradox Interactive/Stellaris/mod/autocolonise"
+supported_version="3.6.1"
+path="C:/Users/Shrooblord/Documents/StellarisModDev/projects/autocolonise/autocolonise"

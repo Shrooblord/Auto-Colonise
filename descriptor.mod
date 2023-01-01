@@ -4,4 +4,4 @@ tags={
 	"Gameplay"
 }
 name="Auto-Colonise"
-supported_version="2.6.3"
+supported_version="3.6.1"
